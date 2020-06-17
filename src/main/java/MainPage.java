@@ -24,7 +24,7 @@ public class MainPage {
         this.driver.navigate().to(MAIN_PAGE_URL);
         return this;
     }
-    
+
 
     public MainPage TshirtTab() {
         this.driver.findElement(tshirtsTab).click();
