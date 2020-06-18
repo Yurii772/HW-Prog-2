@@ -29,8 +29,8 @@ public class MainPageTest {
                         .salesBanner();
     }
 
-//    @After
-//    public void cleanup() {
-//        driver.quit;
-//    }
+    @After
+    public void quit() {
+        mainPage.closeDriver();
+    }
 }
