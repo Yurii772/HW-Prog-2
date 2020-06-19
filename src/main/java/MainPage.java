@@ -1,23 +1,51 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 
 public class MainPage {
-    private static final String MAIN_PAGE_URL="http://automationpractice.com/";
+    private static final String MAIN_PAGE_URL = "http://automationpractice.com/";
+    private static final String BLOUSE_PAGE_URL = "http://automationpractice.com/index.php?controller=search&orderby=position&orderway=desc&search_query=Blouse&submit_search=";
     private WebDriver driver;
 
-    private By backToMain = By.xpath("//*[@id=\"header_logo\"]/a/img");
-    private By tshirtsTab = By.xpath("//*[@id='block_top_menu']/ul/li[3]/a");
-    private By sizeLcheckbox = By.id("layered_id_attribute_group_3");
-    private By salesBanner = By.xpath("//*[@id=\"header\"]/div[1]");
-    private By womenSection = By.cssSelector("#block_top_menu > ul > li:nth-child(1) > a");
-    private By dressesSection = By.cssSelector("#block_top_menu > ul > li:nth-child(2) > a");
-    private By threeDaysSalesBanner = By.xpath("//*[@id=\"htmlcontent_top\"]/ul/li[1]/a/img");
-    private By summerSaleBanner = By.className("htmlcontent-item-2 col-xs-4");
-    private By bestSellers = By.cssSelector("#home-page-tabs > li.active > a");
+    @FindBy(id = "search_query_top")
+    private WebElement serchField;
+
+    @FindBy(xpath = "//button[@name='submit_search']")
+    private WebElement searchButton;
+
+    @FindBy(className = "icon-th-list")
+    private WebElement listViewButton;
+
+    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span")
+    private WebElement addToCardButton;
+
+    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span")
+    private WebElement proceedToCheckoutButton;
+
+    @FindBy(xpath = "//*[@id=\"cart_quantity_up_2_7_0_0\"]/span")
+    private WebElement plusOneButton;
+
+    @FindBy(xpath = "//*[@id=\"product_2_7_0_0\"]/td[5]/input[2]")
+    private WebElement qtyField;
+
+    @FindBy(xpath = "//*[@id=\"total_product\"]")
+    private WebElement totalProductField;
+
+    @FindBy(xpath = "//*[@id=\"total_shipping\"]")
+    private WebElement totalShipping;
+
+    @FindBy(xpath = "//*[@id=\"total_tax\"]")
+    private WebElement totalTax;
+
+    @FindBy(xpath = "//*[@id=\"total_price\"]")
+    private WebElement totalPrice;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public MainPage openMainPage() {
@@ -25,19 +53,17 @@ public class MainPage {
         return this;
     }
 
-
-    public MainPage TshirtTab() {
-        this.driver.findElement(tshirtsTab).click();
+    public MainPage inputBlouse () {
+        serchField.sendKeys("Blouse");
         return this;
     }
 
-    public MainPage backToMainPage () {
-        this.driver.findElement(backToMain).click();
+    public MainPage searchBlouse () {
+        searchButton.click();
         return this;
     }
 
-    public MainPage salesBanner () {
-        this.driver.findElement(salesBanner).click();
-        return this;
+    public void closeDriver () {
+        driver.quit();
     }
 }

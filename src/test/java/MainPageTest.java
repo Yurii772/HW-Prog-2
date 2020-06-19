@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+//search for blouse
+
 public class MainPageTest {
 
     private MainPage mainPage;
@@ -22,11 +24,14 @@ public class MainPageTest {
 
     @Test
     public void navigateOver() {
-
                 mainPage.openMainPage()
-                        .TshirtTab()
-                        .backToMainPage()
-                        .salesBanner();
+                        .inputBlouse()
+                        .searchBlouse()
+                        ;
+
+
+
+
     }
 
     @After
