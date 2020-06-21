@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -22,28 +23,53 @@ public class orderTest {
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         this.blousePage = new BlousePage(driver);
+            blousePage
+                    .openBlousePage()
+                    .listView()
+                    .addToCard()
+                    .proceedCheckout()
+                    .plussOne()
+                    .pause();
     }
 
     @Test
-    public void orderBlouse () {
-        blousePage
-                .openBlousePage()
-                .listView()
-                .addToCard()
-                .proceedCheckout()
-                .plussOne()
-                .pause();
-//        String totalProduct = blousePage.getTotalProduct();
-//        String totalProducts = blousePage.getTotalProducts();
-//        String totalShipping = blousePage.getTotalShipping();
-//        String tax = blousePage.getTax();
+    public void checkTotalProduct() {
+        String totalProduct = blousePage.getTotalProduct();
+        String expectedTotalProduct = "$54";
+        Assert.assertEquals(expectedTotalProduct, totalProduct);
+    }
+
+    @Test
+    public void TotalProducts() {
+        String totalProducts = blousePage.getTotalProducts();
+        String expectedTotalProducts = "$54";
+        Assert.assertEquals(expectedTotalProducts, totalProducts);
+    }
+
+    @Test
+    public void checkTotalShipping() {
+        String totalShipping = blousePage.getTotalShipping();
+        String expectedTotalShipping = "$2";
+        Assert.assertEquals(expectedTotalShipping, totalShipping);
+    }
+
+    @Test
+    public void checkTax() {
+        String tax = blousePage.getTax();
+        String expectedTax = "$0";
+        Assert.assertEquals(expectedTax, tax);
+    }
+
+    @Test
+    public void chackTotalOrderAmount() {
         String totalOrderAmount = blousePage.getTotalOrderAmount();
-        System.out.println(totalOrderAmount);
+        String expectedTotalOrderAmount = "$59";
+        Assert.assertEquals(expectedTotalOrderAmount, totalOrderAmount);
     }
 
 
-//    @After
-//    public void quit() {
-//        blousePage.closeDriver();
-//    }
+    @After
+    public void quit() {
+        blousePage.closeDriver();
+    }
 }
