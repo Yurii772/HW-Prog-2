@@ -2,9 +2,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.sql.SQLOutput;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.Integer.parseInt;
 
 public class orderTest {
     private BlousePage blousePage;
@@ -22,11 +26,24 @@ public class orderTest {
 
     @Test
     public void orderBlouse () {
-        blousePage.openBlousePage();
+        blousePage
+                .openBlousePage()
+                .listView()
+                .addToCard()
+                .proceedCheckout()
+                .plussOne()
+                .pause();
+//        String totalProduct = blousePage.getTotalProduct();
+//        String totalProducts = blousePage.getTotalProducts();
+//        String totalShipping = blousePage.getTotalShipping();
+//        String tax = blousePage.getTax();
+        String totalOrderAmount = blousePage.getTotalOrderAmount();
+        System.out.println(totalOrderAmount);
     }
 
-    @After
-    public void quit() {
-        blousePage.closeDriver();
-    }
+
+//    @After
+//    public void quit() {
+//        blousePage.closeDriver();
+//    }
 }
