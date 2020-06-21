@@ -40,14 +40,11 @@ public class BlousePage {
     @FindBy(xpath = "//*[@id=\"total_price\"]")
     private WebElement totalOrderAmount;
 
+    @FindBy(className = "icon-trash")
+    private WebElement trashBtn;
 
-
-
-//    @FindBy(xpath = "//*[@id=\"total_price\"]")
-//    private WebElement totalPrice;
-//
-//    @FindBy(xpath = "//*[@id=\"total_product\"]]")
-//    private WebElement totalSum;
+    @FindBy(css = "#center_column > p")
+    private WebElement bottomBar;
 
     public BlousePage(WebDriver driver) {
         this.driver = driver;
@@ -79,10 +76,6 @@ public class BlousePage {
         return this;
     }
 
-    public void pause() {
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-    }
-
     public String getTotalProduct(){
         return totalForProduct.getText();
     }
@@ -103,13 +96,14 @@ public class BlousePage {
         return totalOrderAmount.getText();
     }
 
+    public BlousePage deleteItem(){
+        trashBtn.click();
+        return this;
+    }
 
-
-//    public BlousePage(){
-//        new WebDriverWait(driver, 5);
-//    }
-
-
+    public String getBottomBarText() {
+        return bottomBar.getText();
+    }
 
     public void closeDriver() {
         driver.quit();
