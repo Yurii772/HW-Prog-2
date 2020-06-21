@@ -105,6 +105,7 @@ public class BlousePage {
         return bottomBar.getText();
     }
 
+    
     public void closeDriver() {
         driver.quit();
     }
