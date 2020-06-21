@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,42 +25,41 @@ public class orderTest {
                     .listView()
                     .addToCard()
                     .proceedCheckout()
-                    .plussOne()
-                    .pause();
+                    .plussOne();
     }
 
     @Test
     public void checkTotalProduct() {
         String totalProduct = blousePage.getTotalProduct();
-        String expectedTotalProduct = "$54";
+        String expectedTotalProduct = "$54.00";
         Assert.assertEquals(expectedTotalProduct, totalProduct);
     }
 
     @Test
     public void TotalProducts() {
         String totalProducts = blousePage.getTotalProducts();
-        String expectedTotalProducts = "$54";
+        String expectedTotalProducts = "$54.00";
         Assert.assertEquals(expectedTotalProducts, totalProducts);
     }
 
     @Test
     public void checkTotalShipping() {
         String totalShipping = blousePage.getTotalShipping();
-        String expectedTotalShipping = "$2";
+        String expectedTotalShipping = "$2.00";
         Assert.assertEquals(expectedTotalShipping, totalShipping);
     }
 
     @Test
     public void checkTax() {
         String tax = blousePage.getTax();
-        String expectedTax = "$0";
+        String expectedTax = "$0.00";
         Assert.assertEquals(expectedTax, tax);
     }
 
     @Test
     public void chackTotalOrderAmount() {
         String totalOrderAmount = blousePage.getTotalOrderAmount();
-        String expectedTotalOrderAmount = "$59";
+        String expectedTotalOrderAmount = "$59.00";
         Assert.assertEquals(expectedTotalOrderAmount, totalOrderAmount);
     }
 

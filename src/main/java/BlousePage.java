@@ -43,7 +43,7 @@ public class BlousePage {
     @FindBy(className = "icon-trash")
     private WebElement trashBtn;
 
-    @FindBy(css = "#center_column > p")
+    @FindBy(css = "#center_column > p >")
     private WebElement bottomBar;
 
     public BlousePage(WebDriver driver) {
@@ -76,27 +76,27 @@ public class BlousePage {
         return this;
     }
 
-    public String getTotalProduct(){
+    public String getTotalProduct() {
         return totalForProduct.getText();
     }
 
-    public String getTotalProducts(){
+    public String getTotalProducts() {
         return totalProducts.getText();
     }
 
-    public String getTotalShipping(){
+    public String getTotalShipping() {
         return totalShipping.getText();
     }
 
-    public String getTax(){
+    public String getTax() {
         return tax.getText();
     }
 
-    public String getTotalOrderAmount(){
+    public String getTotalOrderAmount() {
         return totalOrderAmount.getText();
     }
 
-    public BlousePage deleteItem(){
+    public BlousePage deleteItem() {
         trashBtn.click();
         return this;
     }
@@ -104,6 +104,7 @@ public class BlousePage {
     public String getBottomBarText() {
         return bottomBar.getText();
     }
+
 
     public void closeDriver() {
         driver.quit();
