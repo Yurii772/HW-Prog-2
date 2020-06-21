@@ -28,8 +28,7 @@ public class orderTest {
                     .listView()
                     .addToCard()
                     .proceedCheckout()
-                    .plussOne()
-                    .pause();
+                    .plussOne();
     }
 
     @Test
@@ -61,7 +60,7 @@ public class orderTest {
     }
 
     @Test
-    public void chackTotalOrderAmount() {
+    public void checkTotalOrderAmount() {
         String totalOrderAmount = blousePage.getTotalOrderAmount();
         String expectedTotalOrderAmount = "$59";
         Assert.assertEquals(expectedTotalOrderAmount, totalOrderAmount);
